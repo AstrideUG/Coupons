@@ -4,17 +4,33 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import de.gameteamspeak.coupons.data.Coupon
 import net.darkdevelopers.darkbedrock.darkness.general.configs.ConfigData
+import net.darkdevelopers.darkbedrock.darkness.general.configs.gson.GsonConfig
 import net.darkdevelopers.darkbedrock.darkness.general.configs.gson.GsonService
+import net.darkdevelopers.darkbedrock.darkness.general.functions.toNonNull
+import net.darkdevelopers.darkbedrock.darkness.general.message.GsonMessages
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.toMaterial
+import org.bukkit.Bukkit
+import org.bukkit.Material
 import java.io.File
 
 class ConfigProvider(private val directory: File) {
 
     val data by lazy { Data() }
+    val messages by lazy { Messages() }
+
+    inner class Messages internal constructor() {
+
+        private val configData = ConfigData(directory, "messages.json")
+        val messages = GsonMessages(GsonConfig(configData)).availableMessages
+
+    }
+
+
 
     inner class Data internal constructor() {
 
         /* Main */
+
         private val configData = ConfigData(directory, "data.json")
         private val jsonObject = GsonService.load(configData) as? JsonObject ?: JsonObject()
 
@@ -23,11 +39,11 @@ class ConfigProvider(private val directory: File) {
             val coupons = jsonObject["coupons"]?.asJsonArray ?: return emptySet()
             return coupons.mapNotNull { it as? JsonObject }.mapNotNull { element ->
                 val name = element.get("name")?.asString ?: return@mapNotNull null
-                val displayName = element.get("display-name")?.asString ?: return@mapNotNull null
-                val lore = (element.get("lore") as? JsonArray)?.map { it.asString } ?: listOf()
-                val type = element.get("type")?.asString?.toMaterial() ?: return@mapNotNull null
+                val displayName = element.get("display-name")?.asString ?: "DisplayName"
+                val lore = (element.get("lore") as? JsonArray)?.map { it.asString } ?: emptyList()
+                val type = element.get("type")?.asString?.toMaterial() ?: Material.STONE
                 val subId = element.get("sub-id")?.asShort ?: 0
-                val command = element.get("command")?.asString ?: return@mapNotNull null
+                val command = (element.get("command") as? JsonArray)?.map { it.asString } ?: emptyList()
 
                 return@mapNotNull Coupon(name, displayName, lore, type, subId, command)
             }.toSet()
@@ -44,7 +60,7 @@ class ConfigProvider(private val directory: File) {
                         add("lore", JsonArray().apply { coupon.lore.forEach { add(it) } })
                         addProperty("type", coupon.itemType.name)
                         addProperty("sub-id", coupon.itemSubID)
-                        addProperty("command", coupon.command)
+                        add("command", JsonArray().apply { coupon.command.forEach { add(it) } })
                     }
                 })
             }
@@ -54,7 +70,12 @@ class ConfigProvider(private val directory: File) {
 
         }
 
+    }
 
+    companion object {
+        val instance: ConfigProvider
+            get() = Bukkit.getServicesManager()?.getRegistration(ConfigProvider::class.java)?.provider.toNonNull("ConfigProvider")
+        val messages = instance.messages.messages
     }
 
 }
