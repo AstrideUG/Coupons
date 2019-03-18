@@ -17,17 +17,13 @@ class Coupons : DarkPlugin() {
     }
 
     override fun onLoad() = onLoad {
-        Bukkit.getServicesManager().register(
-                ConfigProvider::class.java,
-                ConfigProvider(dataFolder),
-                this,
-                ServicePriority.Normal
-        ) //Important for ConfigService.instance
-        coupons.addAll(data.load())
+        Bukkit.getServicesManager().register(ConfigProvider::class.java, ConfigProvider(dataFolder), this, ServicePriority.Normal) //Important for ConfigService.instance
+
     }
 
     override fun onEnable() = onEnable {
 
+        coupons.addAll(data.load())
         CouponsCommand(this)
 
     }

@@ -4,9 +4,9 @@ import org.bukkit.Material
 
 data class Coupon(
         val name: String,
-        val displayName: String = "DisplayName",
-        val lore: List<String> = emptyList(),
-        val itemType: Material = Material.STONE,
-        val itemSubID: Short = 0,
-        val command: List<String> = emptyList()
+        var displayName: String = "DisplayName",
+        var lore: List<String> = emptyList(),
+        var itemType: Material = Material.STONE,
+        var itemSubID: Short = 0,
+        var command: List<String> = emptyList()
 )

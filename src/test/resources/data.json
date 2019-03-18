@@ -1,0 +1,14 @@
+{
+  "coupons": [
+    {
+      "name": "SuperGeil",
+      "display-name": "Ich bin super cool!",
+      "lore": [
+        "#DasHeißtCactussen!"
+      ],
+      "type": "CACTUS",
+      "sub-id": 0,
+      "command": "say Super Geil!;"
+    }
+  ]
+}

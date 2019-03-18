@@ -1,0 +1,28 @@
+{
+  "Messages": {
+    "language": "de_DE",
+    "languages": {
+      "de_DE": {
+        "PREFIX": "&dCoupons &7| &r",
+        "Coupons.Commands.Coupons.Create.Success": "",
+        "Coupons.Commands.Coupons.Create.Successfully": "%PREFIX%&aCoupon wurde erfolgreich erstellt.",
+        "Coupons.Commands.Coupons.Delete.Success": "",
+        "Coupons.Commands.Coupons.Delete.Successfully": "%PREFIX%&cDu hast den Coupon erfolgreich gelöscht.",
+        "Coupons.Commands.Coupons.Give.Success": "",
+        "Coupons.Commands.Coupons.Give.Successfully": "%PREFIX%&bDu hast dir den Coupon &6<Name> &berfolgreich gegeben.",
+        "Coupons.Commands.Coupons.Give.Failed.CanNotFindCoupon": "%PREFIX%&cDer Coupon &6<Name> &ckonnte nicht gefunden werden!",
+        "Coupons.Commands.Coupons.Edit.Failed.CanNotFindCoupon": "%PREFIX%&cDer Coupon &6<Name> &ckonnte nicht gefunden werden!",
+        "Coupons.Commands.Coupons.Edit.DisplayName.Success": "",
+        "Coupons.Commands.Coupons.Edit.DisplayName.Successfully": "%PREFIX%&3Du hast den &eDisplayName &3erfolgreich geändert.",
+        "Coupons.Commands.Coupons.Edit.Lore.Success": "",
+        "Coupons.Commands.Coupons.Edit.Lore.Successfully": "%PREFIX%&3Du hast die &eLore &3erfolgreich geändert.",
+        "Coupons.Commands.Coupons.Edit.ItemType.Success": "",
+        "Coupons.Commands.Coupons.Edit.ItemType.Successfully": "%PREFIX%&3Du hast den &eItemType &3erfolgreich geändert.",
+        "Coupons.Commands.Coupons.Edit.SubID.Success": "",
+        "Coupons.Commands.Coupons.Edit.SubID.Successfully": "%PREFIX%&3Du hast die &eSubID &3erfolgreich geändert.",
+        "Coupons.Commands.Coupons.Edit.Command.Success": "",
+        "Coupons.Commands.Coupons.Edit.Command.Successfully": "%PREFIX%&3Du hast den &eCommand &3erfolgreich geändert."
+      }
+    }
+  }
+}

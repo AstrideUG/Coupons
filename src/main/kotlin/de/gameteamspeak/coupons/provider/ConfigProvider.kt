@@ -7,8 +7,8 @@ import net.darkdevelopers.darkbedrock.darkness.general.configs.ConfigData
 import net.darkdevelopers.darkbedrock.darkness.general.configs.gson.GsonConfig
 import net.darkdevelopers.darkbedrock.darkness.general.configs.gson.GsonService
 import net.darkdevelopers.darkbedrock.darkness.general.functions.toNonNull
-import net.darkdevelopers.darkbedrock.darkness.general.message.GsonMessages
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.toMaterial
+import net.darkdevelopers.darkbedrock.darkness.spigot.messages.SpigotGsonMessages
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import java.io.File
@@ -21,10 +21,11 @@ class ConfigProvider(private val directory: File) {
     inner class Messages internal constructor() {
 
         private val configData = ConfigData(directory, "messages.json")
-        val messages = GsonMessages(GsonConfig(configData)).availableMessages
+        private val config = GsonConfig(configData).load()
+        private val spigotGsonMessages = SpigotGsonMessages(config)
+        val messages = spigotGsonMessages.availableMessages
 
     }
-
 
 
     inner class Data internal constructor() {
@@ -75,7 +76,7 @@ class ConfigProvider(private val directory: File) {
     companion object {
         val instance: ConfigProvider
             get() = Bukkit.getServicesManager()?.getRegistration(ConfigProvider::class.java)?.provider.toNonNull("ConfigProvider")
-        val messages = instance.messages.messages
+        val messages get() = instance.messages.messages
     }
 
 }
