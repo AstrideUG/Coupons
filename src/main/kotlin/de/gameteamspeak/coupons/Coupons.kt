@@ -2,6 +2,7 @@ package de.gameteamspeak.coupons
 
 import de.gameteamspeak.coupons.commands.CouponsCommand
 import de.gameteamspeak.coupons.data.Coupon
+import de.gameteamspeak.coupons.listeners.CouponListener
 import de.gameteamspeak.coupons.provider.ConfigProvider
 import net.darkdevelopers.darkbedrock.darkness.spigot.plugin.DarkPlugin
 import org.bukkit.Bukkit
@@ -25,6 +26,7 @@ class Coupons : DarkPlugin() {
 
         coupons.addAll(data.load())
         CouponsCommand(this)
+        CouponListener(this)
 
     }
 

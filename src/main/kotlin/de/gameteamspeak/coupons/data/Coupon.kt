@@ -8,5 +8,5 @@ data class Coupon(
         var lore: List<String> = emptyList(),
         var itemType: Material = Material.STONE,
         var itemSubID: Short = 0,
-        var command: List<String> = emptyList()
+        var commands: List<String> = emptyList()
 )

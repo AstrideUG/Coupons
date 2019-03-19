@@ -32,6 +32,10 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    maven {
+        name = 'jitpack.io'
+        url = 'https://jitpack.io'
+    }
 }
 
 
@@ -45,6 +49,9 @@ dependencies {
     jarLibs(fileTree(libsDirName))
 
     compile 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+    compile ('com.github.tr7zw:Item-NBT-API:master-SNAPSHOT'){
+        exclude(group: "org.bstats")
+    }
 
     jarLibs "org.jetbrains.kotlin:kotlin-stdlib"
     jarLibs "org.jetbrains.kotlin:kotlin-reflect"

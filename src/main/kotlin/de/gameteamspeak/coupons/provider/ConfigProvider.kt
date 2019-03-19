@@ -44,7 +44,7 @@ class ConfigProvider(private val directory: File) {
                 val lore = (element.get("lore") as? JsonArray)?.map { it.asString } ?: emptyList()
                 val type = element.get("type")?.asString?.toMaterial() ?: Material.STONE
                 val subId = element.get("sub-id")?.asShort ?: 0
-                val command = (element.get("command") as? JsonArray)?.map { it.asString } ?: emptyList()
+                val command = (element.get("commands") as? JsonArray)?.map { it.asString } ?: emptyList()
 
                 return@mapNotNull Coupon(name, displayName, lore, type, subId, command)
             }.toSet()
@@ -61,7 +61,7 @@ class ConfigProvider(private val directory: File) {
                         add("lore", JsonArray().apply { coupon.lore.forEach { add(it) } })
                         addProperty("type", coupon.itemType.name)
                         addProperty("sub-id", coupon.itemSubID)
-                        add("command", JsonArray().apply { coupon.command.forEach { add(it) } })
+                        add("commands", JsonArray().apply { coupon.commands.forEach { add(it) } })
                     }
                 })
             }

@@ -4,6 +4,7 @@ import de.gameteamspeak.coupons.Coupons
 import de.gameteamspeak.coupons.data.Coupon
 import de.gameteamspeak.coupons.functions.success
 import de.gameteamspeak.coupons.provider.ConfigProvider.Companion.messages
+import de.tr7zw.itemnbtapi.NBTItem
 import net.darkdevelopers.darkbedrock.darkness.spigot.builder.item.ItemBuilder
 import net.darkdevelopers.darkbedrock.darkness.spigot.commands.Command
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.sendIfNotNull
@@ -78,7 +79,8 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                                 .setDisplayName(coupon.displayName)
                                 .setLore(coupon.lore)
                                 .build()
-                        player.inventory.addItem(item)
+
+                        player.inventory.addItem(NBTItem(item).apply { setString("Coupon", coupon.name) }.item)
                         messages["${prefix}Successfully"]?.replace("<Name>", name, true).sendIfNotNull(player)
 
                     } else messages["${prefix}Failed.CanNotFindCoupon"]?.replace("<Name>", name, true).sendIfNotNull(player)
@@ -123,7 +125,7 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                         }
                         "command" -> "${prefix}Command".success(sender) {
 
-                            command += value //TODO: Add remove
+                            commands += value //TODO: Add remove
 
                         }
                     }

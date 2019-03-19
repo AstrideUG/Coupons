@@ -28,6 +28,15 @@
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw/Item-NBT-API/master-SNAPSHOT/4122513fa2c6b53b837a071770d48afb369941f6/Item-NBT-API-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
           <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.21/d0d5ff2ac2ebd8a42697af41e20fc225a23c5d3b/kotlin-reflect-1.3.21.jar!/"/>
         </CLASSES>
         <JAVADOC/>
@@ -132,6 +141,28 @@
         <JAVADOC/>
         <SOURCES>
           <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/7dc55271cad1cf73bb495e372164269e75d9345a/snakeyaml-1.15-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api-plugin/master-SNAPSHOT/8cd69cb2faa79afcd4a9e5ba5f2f8a05cef33889/item-nbt-api-plugin-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api-plugin/master-SNAPSHOT/82d5a97098c9bb20feeaa952a9a7c797a14a1445/item-nbt-api-plugin-master-SNAPSHOT-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api/master-SNAPSHOT/acad452ac0b26d1e5f43534fedb5328141881a09/item-nbt-api-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api/master-SNAPSHOT/a2f81889c8b4cc4e9218b7602f09f2a16387d57f/item-nbt-api-master-SNAPSHOT-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
@@ -224,6 +255,15 @@
     <orderEntry type="module-library" scope="RUNTIME">
       <library>
         <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw/Item-NBT-API/master-SNAPSHOT/4122513fa2c6b53b837a071770d48afb369941f6/Item-NBT-API-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
           <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.21/d0d5ff2ac2ebd8a42697af41e20fc225a23c5d3b/kotlin-reflect-1.3.21.jar!/"/>
         </CLASSES>
         <JAVADOC/>
@@ -328,6 +368,28 @@
         <JAVADOC/>
         <SOURCES>
           <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/7dc55271cad1cf73bb495e372164269e75d9345a/snakeyaml-1.15-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api-plugin/master-SNAPSHOT/8cd69cb2faa79afcd4a9e5ba5f2f8a05cef33889/item-nbt-api-plugin-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api-plugin/master-SNAPSHOT/82d5a97098c9bb20feeaa952a9a7c797a14a1445/item-nbt-api-plugin-master-SNAPSHOT-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api/master-SNAPSHOT/acad452ac0b26d1e5f43534fedb5328141881a09/item-nbt-api-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api/master-SNAPSHOT/a2f81889c8b4cc4e9218b7602f09f2a16387d57f/item-nbt-api-master-SNAPSHOT-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
@@ -415,6 +477,15 @@
         <SOURCES>
           <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/org.spigotmc/spigot-api/1.8.8-R0.1-SNAPSHOT/de6a0a47d74373540163c01d5984d6f9126031f7/spigot-api-1.8.8-R0.1-SNAPSHOT-sources.jar!/"/>
         </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw/Item-NBT-API/master-SNAPSHOT/4122513fa2c6b53b837a071770d48afb369941f6/Item-NBT-API-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="TEST">
@@ -568,6 +639,28 @@
         <JAVADOC/>
         <SOURCES>
           <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/7dc55271cad1cf73bb495e372164269e75d9345a/snakeyaml-1.15-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api-plugin/master-SNAPSHOT/8cd69cb2faa79afcd4a9e5ba5f2f8a05cef33889/item-nbt-api-plugin-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api-plugin/master-SNAPSHOT/82d5a97098c9bb20feeaa952a9a7c797a14a1445/item-nbt-api-plugin-master-SNAPSHOT-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api/master-SNAPSHOT/acad452ac0b26d1e5f43534fedb5328141881a09/item-nbt-api-master-SNAPSHOT.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/Schulz/.gradle/caches/modules-2/files-2.1/com.github.tr7zw.Item-NBT-API/item-nbt-api/master-SNAPSHOT/a2f81889c8b4cc4e9218b7602f09f2a16387d57f/item-nbt-api-master-SNAPSHOT-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
