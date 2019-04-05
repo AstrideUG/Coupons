@@ -10,6 +10,7 @@ import net.darkdevelopers.darkbedrock.darkness.spigot.commands.Command
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.sendIfNotNull
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.toMaterial
 import net.darkdevelopers.darkbedrock.darkness.spigot.utils.isPlayer
+import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
@@ -19,11 +20,13 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
         javaPlugin,
         commandName = "coupons",
         permission = "coupons.commands.coupons",
-        usage = "create <Name>" +
+        usage = "List" +
+                "|Info <Name>" +
+                "|create <Name>" +
                 "|delete <Name>" +
                 "|give <Name> [Amount]" +
                 "|edit <Name> <DisplayName/Lore/ItemType/SubID/Command> <Value>",
-        minLength = 2,
+        minLength = 1,
         maxLength = Int.MAX_VALUE
 
 ) {
@@ -32,11 +35,19 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
 
     override fun perform(sender: CommandSender, args: Array<String>) {
 
-
-        //... edit Hallo Displayname Hallo Welt
-        //... edit Hallo Command say Soos
-        val name = args[1] //edit
         val prefix = "Coupons.Commands.Coupons."
+
+        if (args.size == 1) {
+
+            if (args[0].equals("list", true)) "${prefix}List".success(sender) {
+                coupons.forEach { Bukkit.dispatchCommand(sender, "$commandName info ${it.name}") }
+            } else sendUseMessage(sender)
+
+            return
+
+        }
+
+        val name = args[1] //edit
         when (args[0].toLowerCase()) { //edit
             "create" -> {
 
@@ -133,6 +144,33 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                 } ?: messages["${prefix}Failed.CanNotFindCoupon"]?.replace("<Name>", name, true).sendIfNotNull(sender)
 
             }
+
+            "info" -> {
+
+                @Suppress("NAME_SHADOWING")
+                val prefix = "${prefix}Info."
+
+                if (args.size == 2) {
+
+
+                    val coupon = coupons.find { it.name == name }
+                    if (coupon != null) {
+
+                        messages["${prefix}Successfully"]
+                                ?.replace("<Name>", name, true)
+                                ?.replace("<DisplayName>", coupon.displayName, true)
+                                ?.replace("<ItemType>", coupon.itemType.toString(), true)
+                                ?.replace("<ItemSubID>", coupon.itemSubID.toString(), true)
+                                ?.replace("<Lore>", coupon.lore.toString(), true)
+                                ?.replace("<Commands>", coupon.commands.toString(), true)
+                                .sendIfNotNull(sender)
+
+                    } else messages["${prefix}Failed.CanNotFindCoupon"]?.replace("<Name>", name, true).sendIfNotNull(sender)
+
+                } else sendUseMessage(sender)
+
+            }
+
             else -> sendUseMessage(sender)
         }
 

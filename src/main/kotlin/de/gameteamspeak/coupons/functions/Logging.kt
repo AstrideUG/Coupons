@@ -5,7 +5,7 @@ import net.darkdevelopers.darkbedrock.darkness.spigot.functions.sendIfNotNull
 import org.bukkit.command.CommandSender
 
 //TODO: change the fun name
-fun String.success(sender: CommandSender, block: () -> Unit) {
+inline fun String.success(sender: CommandSender, block: () -> Unit) {
     messages["$this.Success"].sendIfNotNull(sender)
     block()
     messages["$this.Successfully"].sendIfNotNull(sender)

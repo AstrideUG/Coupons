@@ -235,7 +235,7 @@
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Darkness-Spigot-1.0-SNAPSHOT.jar!/"/>
+          <root url="jar://$MODULE_DIR$/libs/Darkness-Spigot-1.0.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES/>
@@ -462,7 +462,7 @@
     <orderEntry type="module-library" scope="RUNTIME">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Darkness-Spigot-1.0-SNAPSHOT.jar!/"/>
+          <root url="jar://$MODULE_DIR$/libs/Darkness-Spigot-1.0.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES/>
@@ -788,7 +788,7 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Darkness-Spigot-1.0-SNAPSHOT.jar!/"/>
+          <root url="jar://$MODULE_DIR$/libs/Darkness-Spigot-1.0.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES/>

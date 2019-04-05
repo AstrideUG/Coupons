@@ -2,6 +2,7 @@ package de.gameteamspeak.coupons.provider
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import com.google.gson.JsonPrimitive
 import de.gameteamspeak.coupons.data.Coupon
 import net.darkdevelopers.darkbedrock.darkness.general.configs.ConfigData
 import net.darkdevelopers.darkbedrock.darkness.general.configs.gson.GsonConfig
@@ -58,10 +59,10 @@ class ConfigProvider(private val directory: File) {
                     coupons.forEach { coupon ->
                         addProperty("name", coupon.name)
                         addProperty("display-name", coupon.displayName)
-                        add("lore", JsonArray().apply { coupon.lore.forEach { add(it) } })
+                        add("lore", JsonArray().apply { coupon.lore.forEach { add(JsonPrimitive(it)) } })
                         addProperty("type", coupon.itemType.name)
                         addProperty("sub-id", coupon.itemSubID)
-                        add("commands", JsonArray().apply { coupon.commands.forEach { add(it) } })
+                        add("commands", JsonArray().apply { coupon.commands.forEach { add(JsonPrimitive(it)) } })
                     }
                 })
             }

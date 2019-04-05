@@ -56,7 +56,7 @@ dependencies {
     jarLibs "org.jetbrains.kotlin:kotlin-stdlib"
     jarLibs "org.jetbrains.kotlin:kotlin-reflect"
     jarLibs "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
-
+    
     testCompileOnly "org.jetbrains.kotlin:kotlin-test"
     testCompileOnly "org.jetbrains.kotlin:kotlin-test-junit5"
     testCompileOnly "org.mockito:mockito-all:2.0.2-beta"
