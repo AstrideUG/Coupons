@@ -2,8 +2,8 @@ package de.gameteamspeak.coupons.commands
 
 import de.gameteamspeak.coupons.Coupons
 import de.gameteamspeak.coupons.data.Coupon
-import de.gameteamspeak.coupons.functions.reloadConfigProvider
 import de.gameteamspeak.coupons.functions.success
+import de.gameteamspeak.coupons.provider.ConfigProvider
 import de.gameteamspeak.coupons.provider.ConfigProvider.Companion.messages
 import de.tr7zw.itemnbtapi.NBTItem
 import net.darkdevelopers.darkbedrock.darkness.spigot.builder.item.ItemBuilder
@@ -23,6 +23,7 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
         permission = "coupons.commands.coupons",
         usage = "List" +
                 "|Reload" +
+                "|Save" +
                 "|Info <Name>" +
                 "|create <Name>" +
                 "|delete <Name>" +
@@ -46,7 +47,10 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                     coupons.forEach { Bukkit.dispatchCommand(sender, "$commandName info ${it.name}") }
                 }
                 "reload" -> "${prefix}Reload".success(sender) {
-                    reloadConfigProvider()
+                    Coupons.instance.coupons = ConfigProvider.instance.data.load().toMutableSet()
+                }
+                "save" -> "${prefix}Save".success(sender) {
+                    ConfigProvider.instance.data.save(coupons)
                 }
                 else -> sendUseMessage(sender)
             }

@@ -9,7 +9,7 @@ import net.darkdevelopers.darkbedrock.darkness.spigot.plugin.DarkPlugin
 
 class Coupons : DarkPlugin() {
 
-    val coupons = mutableSetOf<Coupon>()
+    var coupons = mutableSetOf<Coupon>()
     private val data get() = ConfigProvider.instance.data
 
     init {
