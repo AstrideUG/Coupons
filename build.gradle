@@ -46,16 +46,16 @@ configurations {
 
 dependencies {
 
-    jarLibs(fileTree(libsDirName))
+    compile(fileTree(libsDirName))
 
     compile 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
-    compile ('com.github.tr7zw:Item-NBT-API:master-SNAPSHOT'){
+    compile ('com.github.tr7zw:Item-NBT-API:92c3e14d4a9b511402625d93e260dde9bf7b6d64'){
         exclude(group: "org.bstats")
     }
 
-    jarLibs "org.jetbrains.kotlin:kotlin-stdlib"
-    jarLibs "org.jetbrains.kotlin:kotlin-reflect"
-    jarLibs "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib"
+    compile "org.jetbrains.kotlin:kotlin-reflect"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
     
     testCompileOnly "org.jetbrains.kotlin:kotlin-test"
     testCompileOnly "org.jetbrains.kotlin:kotlin-test-junit5"

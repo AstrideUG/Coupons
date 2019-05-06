@@ -25,7 +25,8 @@
         "Coupons.Commands.Coupons.Edit.Success": "",
         "Coupons.Commands.Coupons.Edit.Successfully": "%PREFIX%&3Du hast den &eCommand &3erfolgreich geändert.",
         "Coupons.Commands.Coupons.List.Success": "%PREFIX%&3Alle Coupous...",
-        "Coupons.Commands.Coupons.Info.Successfully": "%PREFIX%&3Info zum Coupo \n\"%PREFIX%&3Name: <Name>\n\"%PREFIX%&3DisplayName: <DisplayName>\n\"%PREFIX%&3ItemSubID: <ItemSubID>\n\"%PREFIX%&3Lore: <Lore>\n\"%PREFIX%&3Commands: <Commands>",
+        "Coupons.Commands.Coupons.List.Successfully": "%PREFIX%&3\n%PREFIX%&3Name: <Name>",
+        "Coupons.Commands.Coupons.Info.Successfully": "&3\n%PREFIX%&3Name: <Name>\n%PREFIX%&3DisplayName: <DisplayName>\n%PREFIX%&3ItemSubID: <ItemSubID>\n%PREFIX%&3Lore: <Lore>\n%PREFIX%&3Commands: <Commands>",
         "Coupons.Commands.Coupons.Info.Failed.CanNotFindCoupon": "%Coupons.Commands.Coupons.Failed.CanNotFindCoupon%"
       }
     }

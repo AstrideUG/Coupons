@@ -2,11 +2,10 @@ package de.gameteamspeak.coupons
 
 import de.gameteamspeak.coupons.commands.CouponsCommand
 import de.gameteamspeak.coupons.data.Coupon
+import de.gameteamspeak.coupons.functions.registerConfigProvider
 import de.gameteamspeak.coupons.listeners.CouponListener
 import de.gameteamspeak.coupons.provider.ConfigProvider
 import net.darkdevelopers.darkbedrock.darkness.spigot.plugin.DarkPlugin
-import org.bukkit.Bukkit
-import org.bukkit.plugin.ServicePriority
 
 class Coupons : DarkPlugin() {
 
@@ -18,8 +17,8 @@ class Coupons : DarkPlugin() {
     }
 
     override fun onLoad() = onLoad {
-        Bukkit.getServicesManager().register(ConfigProvider::class.java, ConfigProvider(dataFolder), this, ServicePriority.Normal) //Important for ConfigService.instance
-
+        registerConfigProvider()
+        data.save(coupons)
     }
 
     override fun onEnable() = onEnable {

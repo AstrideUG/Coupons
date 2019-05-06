@@ -2,6 +2,7 @@ package de.gameteamspeak.coupons.commands
 
 import de.gameteamspeak.coupons.Coupons
 import de.gameteamspeak.coupons.data.Coupon
+import de.gameteamspeak.coupons.functions.reloadConfigProvider
 import de.gameteamspeak.coupons.functions.success
 import de.gameteamspeak.coupons.provider.ConfigProvider.Companion.messages
 import de.tr7zw.itemnbtapi.NBTItem
@@ -21,6 +22,7 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
         commandName = "coupons",
         permission = "coupons.commands.coupons",
         usage = "List" +
+                "|Reload" +
                 "|Info <Name>" +
                 "|create <Name>" +
                 "|delete <Name>" +
@@ -39,15 +41,22 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
 
         if (args.size == 1) {
 
-            if (args[0].equals("list", true)) "${prefix}List".success(sender) {
-                coupons.forEach { Bukkit.dispatchCommand(sender, "$commandName info ${it.name}") }
-            } else sendUseMessage(sender)
+            when (args[0].toLowerCase()) {
+                "list" -> "${prefix}List".success(sender) {
+                    coupons.forEach { Bukkit.dispatchCommand(sender, "$commandName info ${it.name}") }
+                }
+                "reload" -> "${prefix}Reload".success(sender) {
+                    reloadConfigProvider()
+                }
+                else -> sendUseMessage(sender)
+            }
 
             return
 
         }
 
         val name = args[1] //edit
+        val transform: (String?) -> String? = { it?.replace("<Name>", name, true) }
         when (args[0].toLowerCase()) { //edit
             "create" -> {
 
@@ -74,10 +83,11 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
 
                 if (args.size <= 3) {
 
+
                     val coupon = coupons.find { it.name == name }
                     if (coupon != null) {
 
-                        messages["${prefix}Success"]?.replace("<Name>", name, true).sendIfNotNull(player)
+                        messages["${prefix}Success"]?.map(transform)?.sendIfNotNull(player)
 //                    val amount = if(args.size == 3) args[2].toIntOrNull() ?: 1 else 1
                         val amount = try {
                             args[2].toInt()
@@ -92,9 +102,9 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                                 .build()
 
                         player.inventory.addItem(NBTItem(item).apply { setString("Coupon", coupon.name) }.item)
-                        messages["${prefix}Successfully"]?.replace("<Name>", name, true).sendIfNotNull(player)
+                        messages["${prefix}Successfully"]?.map(transform)?.sendIfNotNull(player)
 
-                    } else messages["${prefix}Failed.CanNotFindCoupon"]?.replace("<Name>", name, true).sendIfNotNull(player)
+                    } else messages["${prefix}Failed.CanNotFindCoupon"]?.map(transform)?.sendIfNotNull(player)
 
                 } else sendUseMessage(sender)
 
@@ -141,7 +151,7 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                         }
                     }
 
-                } ?: messages["${prefix}Failed.CanNotFindCoupon"]?.replace("<Name>", name, true).sendIfNotNull(sender)
+                } ?: messages["${prefix}Failed.CanNotFindCoupon"]?.map(transform)?.sendIfNotNull(sender)
 
             }
 
@@ -157,15 +167,16 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                     if (coupon != null) {
 
                         messages["${prefix}Successfully"]
-                                ?.replace("<Name>", name, true)
-                                ?.replace("<DisplayName>", coupon.displayName, true)
-                                ?.replace("<ItemType>", coupon.itemType.toString(), true)
-                                ?.replace("<ItemSubID>", coupon.itemSubID.toString(), true)
-                                ?.replace("<Lore>", coupon.lore.toString(), true)
-                                ?.replace("<Commands>", coupon.commands.toString(), true)
-                                .sendIfNotNull(sender)
+                                ?.map(transform)
+                                ?.map {
+                                    it?.replace("<DisplayName>", coupon.displayName, true)
+                                            ?.replace("<ItemType>", coupon.itemType.toString(), true)
+                                            ?.replace("<ItemSubID>", coupon.itemSubID.toString(), true)
+                                            ?.replace("<Lore>", coupon.lore.toString(), true)
+                                            ?.replace("<Commands>", coupon.commands.toString(), true)
+                                }?.sendIfNotNull(sender)
 
-                    } else messages["${prefix}Failed.CanNotFindCoupon"]?.replace("<Name>", name, true).sendIfNotNull(sender)
+                    } else messages["${prefix}Failed.CanNotFindCoupon"]?.map(transform)?.sendIfNotNull(sender)
 
                 } else sendUseMessage(sender)
 

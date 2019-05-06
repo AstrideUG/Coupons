@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender
 
 //TODO: change the fun name
 inline fun String.success(sender: CommandSender, block: () -> Unit) {
-    messages["$this.Success"].sendIfNotNull(sender)
+    messages["$this.Success"]?.sendIfNotNull(sender)
     block()
-    messages["$this.Successfully"].sendIfNotNull(sender)
+    messages["$this.Successfully"]?.sendIfNotNull(sender)
 }
