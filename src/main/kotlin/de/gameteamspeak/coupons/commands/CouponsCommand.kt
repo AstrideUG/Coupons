@@ -2,6 +2,7 @@ package de.gameteamspeak.coupons.commands
 
 import de.gameteamspeak.coupons.Coupons
 import de.gameteamspeak.coupons.data.Coupon
+import de.gameteamspeak.coupons.functions.reloadConfigProvider
 import de.gameteamspeak.coupons.functions.success
 import de.gameteamspeak.coupons.provider.ConfigProvider
 import de.gameteamspeak.coupons.provider.ConfigProvider.Companion.messages
@@ -47,7 +48,9 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                     coupons.forEach { Bukkit.dispatchCommand(sender, "$commandName info ${it.name}") }
                 }
                 "reload" -> "${prefix}Reload".success(sender) {
-                    Coupons.instance.coupons = ConfigProvider.instance.data.load().toMutableSet()
+                    reloadConfigProvider()
+                    coupons.clear()
+                    coupons.addAll(ConfigProvider.instance.data.load())
                 }
                 "save" -> "${prefix}Save".success(sender) {
                     ConfigProvider.instance.data.save(coupons)

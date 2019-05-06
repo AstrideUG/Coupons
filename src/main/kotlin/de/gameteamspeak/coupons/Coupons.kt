@@ -9,7 +9,7 @@ import net.darkdevelopers.darkbedrock.darkness.spigot.plugin.DarkPlugin
 
 class Coupons : DarkPlugin() {
 
-    var coupons = mutableSetOf<Coupon>()
+    val coupons = mutableSetOf<Coupon>()
     private val data get() = ConfigProvider.instance.data
 
     init {
@@ -18,7 +18,6 @@ class Coupons : DarkPlugin() {
 
     override fun onLoad() = onLoad {
         registerConfigProvider()
-        data.save(coupons)
     }
 
     override fun onEnable() = onEnable {
@@ -26,6 +25,7 @@ class Coupons : DarkPlugin() {
         coupons.addAll(data.load())
         CouponsCommand(this)
         CouponListener(this)
+        data.save(coupons)
 
     }
 
