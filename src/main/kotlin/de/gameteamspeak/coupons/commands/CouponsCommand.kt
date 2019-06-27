@@ -1,19 +1,19 @@
 package de.gameteamspeak.coupons.commands
 
-import de.gameteamspeak.coupons.Coupons
+import de.gameteamspeak.coupons.coupons
 import de.gameteamspeak.coupons.data.Coupon
 import de.gameteamspeak.coupons.functions.reloadConfigProvider
 import de.gameteamspeak.coupons.functions.success
+import de.gameteamspeak.coupons.functions.translateColors
 import de.gameteamspeak.coupons.provider.ConfigProvider
 import de.gameteamspeak.coupons.provider.ConfigProvider.Companion.messages
 import de.tr7zw.itemnbtapi.NBTItem
 import net.darkdevelopers.darkbedrock.darkness.spigot.builder.item.ItemBuilder
 import net.darkdevelopers.darkbedrock.darkness.spigot.commands.Command
+import net.darkdevelopers.darkbedrock.darkness.spigot.functions.isPlayer
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.sendIfNotNull
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.toMaterial
-import net.darkdevelopers.darkbedrock.darkness.spigot.utils.isPlayer
 import org.bukkit.Bukkit
-import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
 import org.bukkit.plugin.java.JavaPlugin
@@ -34,8 +34,6 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
         maxLength = Int.MAX_VALUE
 
 ) {
-
-    private val coupons get() = Coupons.instance.coupons
 
     override fun perform(sender: CommandSender, args: Array<String>) {
 
@@ -66,22 +64,16 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
         val transform: (String?) -> String? = { it?.replace("<Name>", name, true) }
         when (args[0].toLowerCase()) { //edit
             "create" -> {
-
                 if (args.size == 2) {
-
                     "${prefix}Create".success(sender) {
                         coupons += Coupon(name)
                     }
-
                 } else sendUseMessage(sender)
-
             }
             "delete" -> {
-
                 if (args.size == 2) "${prefix}Delete".success(sender) {
                     coupons.removeIf { it.name == name }
                 } else sendUseMessage(sender)
-
             }
             "give" -> sender.isPlayer { player ->
 
@@ -89,7 +81,6 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
                 val prefix = "${prefix}Give."
 
                 if (args.size <= 3) {
-
 
                     val coupon = coupons.find { it.name == name }
                     if (coupon != null) {
@@ -132,29 +123,19 @@ class CouponsCommand(javaPlugin: JavaPlugin) : Command(
 
                     when (args[2].toLowerCase()) {
                         "displayname" -> "${prefix}DisplayName".success(sender) {
-
-                            displayName = ChatColor.translateAlternateColorCodes('&', value)
-
+                            displayName = value.translateColors()
                         }
                         "lore" -> "${prefix}Lore".success(sender) {
-
-                            lore += ChatColor.translateAlternateColorCodes('&', value)  //TODO: Add remove
-
+                            lore += value.translateColors()  //TODO: Add remove
                         }
                         "itemtype" -> "${prefix}ItemType".success(sender) {
-
                             itemType = args[3].toMaterial() ?: Material.CACTUS
-
                         }
                         "subid" -> "${prefix}SubID".success(sender) {
-
                             itemSubID = args[3].toShortOrNull() ?: 0
-
                         }
                         "command" -> "${prefix}Command".success(sender) {
-
                             commands += value //TODO: Add remove
-
                         }
                     }
 

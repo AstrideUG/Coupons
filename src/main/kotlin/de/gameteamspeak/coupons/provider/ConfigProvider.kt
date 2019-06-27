@@ -6,7 +6,9 @@ import com.google.gson.JsonPrimitive
 import de.gameteamspeak.coupons.data.Coupon
 import net.darkdevelopers.darkbedrock.darkness.general.configs.ConfigData
 import net.darkdevelopers.darkbedrock.darkness.general.configs.gson.GsonConfig
-import net.darkdevelopers.darkbedrock.darkness.general.configs.gson.GsonService
+import net.darkdevelopers.darkbedrock.darkness.general.functions.load
+import net.darkdevelopers.darkbedrock.darkness.general.functions.save
+import net.darkdevelopers.darkbedrock.darkness.general.functions.toConfigData
 import net.darkdevelopers.darkbedrock.darkness.general.functions.toNonNull
 import net.darkdevelopers.darkbedrock.darkness.spigot.functions.toMaterial
 import net.darkdevelopers.darkbedrock.darkness.spigot.messages.SpigotGsonMessages
@@ -21,20 +23,17 @@ class ConfigProvider(private val directory: File) {
 
     inner class Messages internal constructor() {
 
-        private val configData = ConfigData(directory, "messages.json")
-        private val config = GsonConfig(configData).load()
-        private val spigotGsonMessages = SpigotGsonMessages(config)
+        private val configData =  "messages".toConfigData(directory)
+        private val spigotGsonMessages = SpigotGsonMessages(configData)
         val messages = spigotGsonMessages.availableMessages
 
     }
 
-
     inner class Data internal constructor() {
 
         /* Main */
-
-        private val configData = ConfigData(directory, "data.json")
-        private val jsonObject = GsonService.load(configData) as? JsonObject ?: JsonObject()
+        private val configData = "data".toConfigData(directory)
+        private val jsonObject = configData.load<JsonObject>()
 
         fun load(): Set<Coupon> {
 
@@ -68,7 +67,7 @@ class ConfigProvider(private val directory: File) {
             }
 
             val jsonObject = JsonObject().apply { add("coupons", entries) }
-            GsonService.save(configData, jsonObject)
+            configData.save(jsonObject)
 
         }
 

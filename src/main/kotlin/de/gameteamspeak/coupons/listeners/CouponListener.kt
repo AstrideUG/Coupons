@@ -1,6 +1,6 @@
 package de.gameteamspeak.coupons.listeners
 
-import de.gameteamspeak.coupons.Coupons
+import de.gameteamspeak.coupons.coupons
 import de.tr7zw.itemnbtapi.NBTItem
 import net.darkdevelopers.darkbedrock.darkness.spigot.listener.Listener
 import net.darkdevelopers.darkbedrock.darkness.spigot.utils.removeItemInHand
@@ -30,20 +30,20 @@ class CouponListener(javaPlugin: JavaPlugin) : Listener(javaPlugin) {
 //    }
 
 
-    @EventHandler
-    fun onPlayerInteractEvent(event: PlayerInteractEvent) {
+	@EventHandler
+	fun onPlayerInteractEvent(event: PlayerInteractEvent) {
 
-        val currentItem = event.item ?: return
-        val nbtItem = NBTItem(currentItem)
-        val name = nbtItem.getString("Coupon") ?: return
-        val coupon = Coupons.instance.coupons.find { it.name == name } ?: return
-        val player = event.player ?: return
+		val currentItem = event.item ?: return
+		val nbtItem = NBTItem(currentItem)
+		val name = nbtItem.getString("Coupon") ?: return
+		val coupon = coupons.find { it.name == name } ?: return
+		val player = event.player ?: return
 
-        player.removeItemInHand()
+		player.removeItemInHand()
 
-        coupon.commands.forEach { Bukkit.dispatchCommand(Bukkit.getConsoleSender(), it) }
+		coupon.commands.forEach { Bukkit.dispatchCommand(Bukkit.getConsoleSender(), it) }
 
-    }
+	}
 
 
 }
