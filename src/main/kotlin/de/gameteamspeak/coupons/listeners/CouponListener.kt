@@ -2,6 +2,8 @@ package de.gameteamspeak.coupons.listeners
 
 import de.gameteamspeak.coupons.coupons
 import de.tr7zw.itemnbtapi.NBTItem
+import me.clip.placeholderapi.PlaceholderAPI
+import net.darkdevelopers.darkbedrock.darkness.spigot.functions.execute
 import net.darkdevelopers.darkbedrock.darkness.spigot.listener.Listener
 import net.darkdevelopers.darkbedrock.darkness.spigot.utils.removeItemInHand
 import org.bukkit.Bukkit
@@ -41,7 +43,12 @@ class CouponListener(javaPlugin: JavaPlugin) : Listener(javaPlugin) {
 
 		player.removeItemInHand()
 
-		coupon.commands.forEach { Bukkit.dispatchCommand(Bukkit.getConsoleSender(), it) }
+		coupon.commands.forEach {
+			val command = if (javaPlugin.server.pluginManager.getPlugin("PlaceholderAPI") != null)
+				PlaceholderAPI.setPlaceholders(player, it)
+			else it
+			Bukkit.getConsoleSender().execute(command)
+		}
 
 	}
 
