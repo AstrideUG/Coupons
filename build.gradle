@@ -36,6 +36,10 @@ repositories {
         name = 'jitpack.io'
         url = 'https://jitpack.io'
     }
+    maven {
+        name = 'placeholderapi'
+        url = 'http://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
 }
 
 
@@ -48,20 +52,21 @@ dependencies {
 
     compile(fileTree(libsDirName))
 
+    compile 'me.clip:placeholderapi:2.10.3'
+
     compile 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
-    compile ('com.github.tr7zw:Item-NBT-API:92c3e14d4a9b511402625d93e260dde9bf7b6d64'){
+    compile('com.github.tr7zw:Item-NBT-API:92c3e14d4a9b511402625d93e260dde9bf7b6d64') {
         exclude(group: "org.bstats")
     }
 
     compile "org.jetbrains.kotlin:kotlin-stdlib"
     compile "org.jetbrains.kotlin:kotlin-reflect"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
-    
+
     testCompileOnly "org.jetbrains.kotlin:kotlin-test"
     testCompileOnly "org.jetbrains.kotlin:kotlin-test-junit5"
     testCompileOnly "org.mockito:mockito-all:2.0.2-beta"
     testCompileOnly "org.junit.jupiter:junit-jupiter-api:5.3.1"
-
 
 }
 
